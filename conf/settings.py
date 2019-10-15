@@ -25,7 +25,8 @@ SECRET_KEY = '0e(cszr^ti-*$)t8#0+xl@j_tpsnh_8b=soto!yy8k8tu2@68h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["polar-beach-53897.herokuapp.com"]
+ALLOWED_HOSTS = ["polar-beach-53897.herokuapp.com",
+"127.0.0.1"]
 
 
 # Application definition
@@ -36,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
     #local
-     'whitenoise.runserver_nostatic',
+    "accounts.apps.AccountsConfig",
+    "survey.apps.SurveyConfig",
+
 ]
 
 MIDDLEWARE = [
@@ -124,3 +128,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+AUTH_USER_MODEL = "accounts.CustomUser"

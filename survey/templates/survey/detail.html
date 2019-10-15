@@ -1,0 +1,13 @@
+{% extends "survey/base.html" %}
+{% block content %}
+{{question.question_text}}
+
+<form action="{% url 'survey:vote' survey.id %}" method="post">
+{% csrf_token %}
+{% for choice in survey.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id}}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+<input type="submit" value="Vote">
+</form>
+{% endblock%}

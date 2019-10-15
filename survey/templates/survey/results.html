@@ -1,0 +1,9 @@
+{% extends "survey/base.html" %}
+{% block content %}
+<ul>
+{% for choice in survey.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+<a href="{% url 'survey:index' %}">Home</a>
+</ul>
+{% endblock%}

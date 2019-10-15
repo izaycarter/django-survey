@@ -1,0 +1,20 @@
+{% extends "survey/base.html" %}
+{% block content %}
+
+{% if question_list %}
+
+  <ul>
+      <a href="{% url 'survey:create' %}">Add New Question</a>
+    {% for question in question_list %}
+    <li>
+      <a href="{% url 'survey:detail' question.id %}">{{question.question_text}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+
+{% else %}
+ <a href="{% url 'survey:create' %}"></a>
+  <p>No polls available</p>
+
+{% endif %}
+{% endblock%}
